@@ -1,0 +1,42 @@
+<div class="pageTitle">
+  <h1 style="color: white;">Weather Dashboard</h1>
+</div>
+
+<div class="cityInput">
+  <form class="form-input" #form="ngForm" (submit)="onSubmit()">
+    <div>
+      <div class="input-text__container">
+        <input class="input-text" type="text" placeholder="Enter city" name="city" [(ngModel)]="cityName"
+          (keyup)="handleInputChange($event)" />
+        <button *ngIf="cityName" class="input-text__remove" (click)="clearCity()">
+          <svg style="width: 18px;height: 18px" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" class="lucide lucide-x-icon lucide-x">
+            <path d="M18 6 6 18" />
+            <path d="m6 6 12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <div style="margin-top: 8px;text-align:center;" *ngIf="cityNotFoundMessage">
+        <label style="color: white;font-weight: 500;"> {{cityNotFoundMessage}} </label>
+      </div>
+    </div>
+    <div>
+      <button class="button button-primary" type="submit" style="margin-left: 8px;">Add</button>
+    </div>
+  </form>
+</div>
+
+<div class="grid-container">
+  <div *ngFor="let geo of geoCodingList; index as i" class="card">
+    <div>
+      <app-weather-widget
+        [cityName]="geo.name"
+        [latitude]="geo.lat"
+        [longitude]="geo.lon"
+      ></app-weather-widget>
+    </div>
+    <div class="removeBtn"><button class="button button-danger" (click)="onRemove(i)" >Remove</button></div>
+  </div>
+</div>

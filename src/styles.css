@@ -1,1 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(180deg, #204C84 60px, #162544 300px, #14203D 600px);
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+.button {
+    all: unset;
+    min-width: 100px;
+    min-height: 42px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-primary {
+    background-color: #0065F8;
+    color: white;
+}
+
+.button-danger {
+    background-color: #C5172E;
+    color: white;
+}

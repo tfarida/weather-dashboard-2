@@ -1,0 +1,35 @@
+<div id="divWeatherMain" *ngIf="!isLoading; else loadingTemplate">
+ <div class="weatherWidgetRow" style="font-size: 25px;margin-top: 10px;" [attr.data-testid]="'city_name'">{{ cityName }}</div>
+ <div class="weatherWidgetRow" style="font-size: 32px;margin-top: 5px;" [attr.data-testid]="'temp'">{{ weatherData.temp_celcius }}°C</div>
+  <div class="weatherWidgetRow" style="font-size: 12px;" [attr.data-testid]="'temp_min_max'">
+    {{ weatherData.temp_min }}°C / {{ weatherData.temp_max }}°C
+  </div>
+  <div class="weatherWidgetRow" style="font-size: 12px;" [attr.data-testid]="'feels_like'">
+    Feels like: {{ weatherData.temp_feels_like }}°C
+  </div>
+  <div id="icon" class="weatherWidgetRow"><img  id="wicon" [src]="getWeatherIcon()" alt="Weather icon"></div>
+  <p *ngIf="weatherData.weather.length > 0" style="text-align: center;text-transform: capitalize;margin:0;" [attr.data-testid]="'weather_description'">
+    {{weatherData.weather[0].description}}
+  </p>
+</div>
+
+<ng-template #loadingTemplate>
+  <div class="widget-loading">
+    <svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" stroke="#0065F8">
+      <g fill="none" fill-rule="evenodd">
+        <g transform="translate(2 2)" stroke-width="4">
+          <circle stroke-opacity=".2" cx="18" cy="18" r="18"/>
+          <path d="M36 18c0-9.94-8.06-18-18-18">
+            <animateTransform 
+              attributeName="transform" 
+              type="rotate" 
+              from="0 18 18" 
+              to="360 18 18" 
+              dur="1s" 
+              repeatCount="indefinite" />
+          </path>
+        </g>
+      </g>
+    </svg>
+  </div>
+</ng-template>
